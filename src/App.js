@@ -12,24 +12,6 @@ import Movie from './Movie';
 class App extends Component {
 
   state = {
-    greeting: "Hello~",
-    movies: [{
-        title: "극한직업",
-        poster: "https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1547742906/dqcjjakz78fkti41ynw3.jpg"
-      },
-      {
-        title: "주먹왕 랄프2",
-        poster: "https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1544986706/vaoe76npsnjyv4dlwsan.jpg"
-      },
-      {
-        title: "스윙키즈",
-        poster: "https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1543298799/cec9wtkteak0ivnqwif7.jpg"
-      },
-      {
-        title: "보헤미안 랩소디",
-        poster: "https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1541140008/rx8wiydnqwtir9gwxprn.jpg"
-      }
-    ]
   };
   
   componentWillMount() {
@@ -37,34 +19,45 @@ class App extends Component {
   }
 
   componentDidMount() {
-    //state를 직접 쓰면 안됨!!
-    setTimeout(() => {
-      this.setState({
+    this._getMovies();
+    this._callAPI();
+  }
+  _getMovies = async () => {
+    const movies = await this._callAPI();
 
-      
-        movies: [
-          ...this.state.movies,
-          {
-            title: "국가부도의 날",
-            poster: "https://dhgywazgeek0d.cloudfront.net/watcha/image/upload/c_fill,h_700,q_80,w_490/v1543986878/loidyr3fxuef0rpyybr0.jpg"
-          }
-        ]
-      })
-      console.log("hi~~");
-    }, 3000);
-    console.log("didMount");
+    //callAPI() 완료되기 전까지 실행되지 않음
+    this.setState({
+      movies: movies
+    });
+  }
+
+  _callAPI = () => {
+    return fetch("https://yts.am/api/v2/list_movies.json?sort_by=download_count")
+    .then(response => response.json())
+    .then(json => json.data.movies)
+    .catch(err => console.log(err))
+  }
+
+  _renderMovies = () => {
+    const movies = this.state.movies.map(movie => {
+
+      return <Movie 
+        title = {movie.title_english} 
+        poster = {movie.medium_cover_image} 
+        key = {movie.id} 
+        genres = {movie.genres}
+        synopsis = {movie.synopsis} 
+        />
+    })
+    return movies
   }
 
   render() {
     console.log("render");
+    const {movies} = this.state;
     return (
-      <div className="App">
-        {this.state.greeting}
-        {this.state.movies.map((movie, index) => {
-          return <Movie title = {movie.title} poster= {movie.poster} key = {index} />
-        })}
-
-  
+      <div className={movies ? "App" : "App--loading"}>
+          {this.state.movies ? this._renderMovies() : 'Loading...'}
       </div>
     );
   }
