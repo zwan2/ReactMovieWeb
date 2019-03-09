@@ -7,7 +7,7 @@ https://www.inflearn.com/course/reactjs-web/
 ## 결과물
 영화 TOP 20 정보 사이트.
 
-https://zwan2.github.io/ReactMovieWeb/
+ https://zwan2.github.io/react-movieapp/
 
 ## 기능 구현
 - 영화 정보 API 사용 (yts.ag)
