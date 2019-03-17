@@ -1,13 +1,13 @@
 {
   "main.css": "/ReactMovieWeb/static/css/main.7a8d9703.chunk.css",
-  "main.js": "/ReactMovieWeb/static/js/main.6ea4575b.chunk.js",
-  "main.js.map": "/ReactMovieWeb/static/js/main.6ea4575b.chunk.js.map",
+  "main.js": "/ReactMovieWeb/static/js/main.374b758d.chunk.js",
+  "main.js.map": "/ReactMovieWeb/static/js/main.374b758d.chunk.js.map",
   "runtime~main.js": "/ReactMovieWeb/static/js/runtime~main.b6f183fd.js",
   "runtime~main.js.map": "/ReactMovieWeb/static/js/runtime~main.b6f183fd.js.map",
   "static/js/2.aee7dbea.chunk.js": "/ReactMovieWeb/static/js/2.aee7dbea.chunk.js",
   "static/js/2.aee7dbea.chunk.js.map": "/ReactMovieWeb/static/js/2.aee7dbea.chunk.js.map",
   "index.html": "/ReactMovieWeb/index.html",
-  "precache-manifest.7b35a111f2b15bdd067e42c5519e29fe.js": "/ReactMovieWeb/precache-manifest.7b35a111f2b15bdd067e42c5519e29fe.js",
+  "precache-manifest.9045eeacf8f0081bfe60f9bb02a01d2d.js": "/ReactMovieWeb/precache-manifest.9045eeacf8f0081bfe60f9bb02a01d2d.js",
   "service-worker.js": "/ReactMovieWeb/service-worker.js",
   "static/css/main.7a8d9703.chunk.css.map": "/ReactMovieWeb/static/css/main.7a8d9703.chunk.css.map"
 }
